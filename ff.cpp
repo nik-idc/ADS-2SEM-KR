@@ -150,7 +150,7 @@ bool dfs(int **resGraph, size_t s, size_t t, size_t vertsCount, int *path)
 	st.push(s); // Pushing source node to the stack
 
 	i = 0; // Starting from the source node
-	while (i != t && !st.isEmpty()) // DFS to find any available path
+	while (!st.isEmpty()) // DFS to find any available path
 	{
 		for (j = 0; j < vertsCount; j++)
 		{
