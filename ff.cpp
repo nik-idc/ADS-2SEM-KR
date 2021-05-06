@@ -3,7 +3,7 @@
 void buildAdjMatrix(int**& graph, int& vertsCount)
 {
 	std::ifstream graphDataStream;
-	graphDataStream.open("D:/Óíèâåð/4 Ñåìåñòð/ÀèÑÄ/Êóðñà÷/KR/graph.txt", std::ios_base::in | std::ios_base::binary);
+	graphDataStream.open("D:/Ã“Ã­Ã¨Ã¢Ã¥Ã°/4 Ã‘Ã¥Ã¬Ã¥Ã±Ã²Ã°/Ã€Ã¨Ã‘Ã„/ÃŠÃ³Ã°Ã±Ã Ã·/KR/graph.txt", std::ios_base::in | std::ios_base::binary);
 
 	std::string curLine; // Currently read line
 	list<std::string> alreadyThere; // List of items in order of occurrence, except 'S' node is the first one and 'T' node is the last one
@@ -150,7 +150,7 @@ bool dfs(int **resGraph, size_t s, size_t t, size_t vertsCount, int *path)
 	st.push(s); // Pushing source node to the stack
 
 	i = 0; // Starting from the source node
-	while (i != t && !st.isEmpty()) // DFS to find any available path
+	while (!st.isEmpty()) // DFS to find any available path
 	{
 		for (j = 0; j < vertsCount; j++)
 		{
