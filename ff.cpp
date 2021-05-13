@@ -16,6 +16,8 @@ void buildAdjMatrix(int**& graph, int& vertsCount)
 	while (!graphDataStream.eof()) // First analysis of the file to build an occurrence list
 	{
 		std::getline(graphDataStream, curLine);
+		if (curLine == "")
+			throw std::invalid_argument("Empty line in the input file!");
 		if (curLine[curLine.size() - 1] == '\r')
 			curLine.pop_back();
 
