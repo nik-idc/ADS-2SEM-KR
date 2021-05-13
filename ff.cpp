@@ -84,6 +84,15 @@ void buildAdjMatrix(int**& graph, int& vertsCount)
 		}
 	}
 
+	// Checking if source and sink nodes are there
+	if(alreadyThere[0] != "S" && alreadyThere[alreadyThere.size() - 1] != "T")
+		throw std::invalid_argument("Input file doesn't have a source and a sink!");
+	else if (alreadyThere[0] != "S")
+		throw std::invalid_argument("Input file doesn't have a source!");
+	else if(alreadyThere[alreadyThere.size() - 1] != "T")
+		throw std::invalid_argument("Input file doesn't have a sink!");
+
+
 	// Go back to the beginning of the file
 	graphDataStream.seekg(0);
 	graphDataStream.clear();
@@ -98,7 +107,7 @@ void buildAdjMatrix(int**& graph, int& vertsCount)
 		for (j = 0; j < vertsCount; j++)
 			graph[i][j] = 0;
 
-	
+	bool correctSource = false, correctSink = true;
 	i = 0, j = 0;
 	while (!graphDataStream.eof()) // Reading info to write into the matrix
 	{
@@ -129,9 +138,22 @@ void buildAdjMatrix(int**& graph, int& vertsCount)
 		i = alreadyThere.find(first);
 		j = alreadyThere.find(second);
 
+		if (i == 0 && capacity != "0")
+			correctSource = true;
+		if (i == alreadyThere.size() - 1 && capacity != "0")
+			correctSink = false;
+
 		graph[i][j] = std::stoi(capacity); // Update the matrix
 	}
 	graphDataStream.close(); // Close the file
+
+	// Checking if source and sink are proper
+	if (!correctSource && !correctSink)
+		throw std::invalid_argument("Source doesn't have edges coming out of it and sink has edges coming out of it!");
+	else if (!correctSource)
+		throw std::invalid_argument("Source doesn't have edges coming out!");
+	else if (!correctSink)
+		throw std::invalid_argument("Sink has edges coming out of it!");
 }
 
 bool dfs(int **resGraph, size_t s, size_t t, size_t vertsCount, int *path)
