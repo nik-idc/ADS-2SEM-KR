@@ -107,7 +107,7 @@ void buildAdjMatrix(int**& graph, int& vertsCount)
 		for (j = 0; j < vertsCount; j++)
 			graph[i][j] = 0;
 
-	bool correctSource = false, correctSink = true;
+	bool correctSource, correctSink = true;
 	i = 0, j = 0;
 	while (!graphDataStream.eof()) // Reading info to write into the matrix
 	{
