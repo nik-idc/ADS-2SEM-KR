@@ -1,0 +1,7 @@
+O Q 3
+O P 2
+P R 2
+P Q 3
+Q R 4
+R T 3
+Q T 3

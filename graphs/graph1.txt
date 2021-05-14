@@ -1,0 +1,14 @@
+O Q 15
+S O 30
+S T 15
+S Q 12
+O P 12
+Q T 12
+S P 11
+Q O 32
+O T 22
+P R 24
+P T 12
+S R 23
+Q R 25
+R T 23
