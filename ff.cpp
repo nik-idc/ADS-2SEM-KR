@@ -1,9 +1,9 @@
 #include "ff.h"
 
-void buildAdjMatrix(int**& graph, int& vertsCount)
+void buildAdjMatrix(std::string path, int**& graph, int& vertsCount)
 {
 	std::ifstream graphDataStream;
-	graphDataStream.open("D:/Óíèâåð/4 Ñåìåñòð/ÀèÑÄ/Êóðñà÷/KR/graph.txt", std::ios_base::in | std::ios_base::binary);
+	graphDataStream.open(path, std::ios_base::in | std::ios_base::binary);
 
 	std::string curLine; // Currently read line
 	list<std::string> alreadyThere; // List of items in order of occurrence, except 'S' node is the first one and 'T' node is the last one
@@ -109,7 +109,7 @@ void buildAdjMatrix(int**& graph, int& vertsCount)
 		for (j = 0; j < vertsCount; j++)
 			graph[i][j] = 0;
 
-	bool correctSource, correctSink = true;
+	bool correctSource = false, correctSink = true;
 	i = 0, j = 0;
 	while (!graphDataStream.eof()) // Reading info to write into the matrix
 	{
